@@ -57,7 +57,7 @@ export default function ShiftForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="p-4 bg-white rounded shadow space-y-6"
+      className="p-4 bg-white rounded-2xl shadow space-y-6"
     >
       {/* Select Dokter */}
       <div>
@@ -96,7 +96,7 @@ export default function ShiftForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="bg-blue-600 text-white px-4 py-2 rounded w-full"
+        className="bg-blue-600 text-white px-4 py-2 rounded-lg w-full"
       >
         {isSubmitting ? "Menyimpan..." : "Simpan Semua"}
       </button>

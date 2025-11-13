@@ -15,6 +15,15 @@ export default function Calendar() {
   const [grouped, setGrouped] = useState<GroupedShift>({});
   const [uniqueMonths, setUniqueMonths] = useState<string[]>([""]);
   const [loading, setLoading] = useState(true);
+  const namaHari = [
+    "Minggu",
+    "Senin",
+    "Selasa",
+    "Rabu",
+    "Kamis",
+    "Jumat",
+    "Sabtu",
+  ];
 
   useEffect(() => {
     async function load() {
@@ -70,15 +79,29 @@ export default function Calendar() {
               {days.map((d) => {
                 const dateStr = toLocalDateString(d);
                 const items = grouped[dateStr] || [];
-
+                const getDayName = namaHari[d.getDay()];
+                const isWeekend =
+                  getDayName === "Sabtu" || getDayName === "Minggu";
                 return (
-                  <div key={dateStr} className="border p-2 min-h-[100px]">
-                    <div className="font-bold">{d.getDate()}</div>
-                    {items.map((e, idx) => (
-                      <div key={idx} className="text-sm">
-                        {e.doctor} ({e.shift})
-                      </div>
-                    ))}
+                  <div key={dateStr}>
+                    <div className="text-sm">
+                      <span className="mx-1">{d.getDate()},</span>
+                      <span
+                        className={`font-semibold ${
+                          isWeekend ? "text-red-600" : "text-black"
+                        }`}
+                      >
+                        {getDayName}
+                      </span>
+                    </div>
+                    <div className="border p-1 min-h-[150px]">
+                      <div className=""></div>
+                      {items.map((e, idx) => (
+                        <div key={idx} className="text-xs">
+                          {e.doctor} ({e.shift})
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 );
               })}

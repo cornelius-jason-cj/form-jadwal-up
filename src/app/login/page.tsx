@@ -1,11 +1,11 @@
 import Header from "@/components/Header";
-import ShiftForm from "../components/ShiftForm";
+import Login from "@/components/Login";
 
-export default function Home() {
+export default function CalendarPage() {
   return (
     <div className="max-w-xl mx-auto">
       <Header />
-      <ShiftForm />
+      <Login />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import { DateObject } from "react-multi-date-picker";
 
 export interface GetShiftResponse {
+  id: string;
   date: string;
   shift: string;
   doctors: {
