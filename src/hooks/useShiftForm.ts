@@ -78,7 +78,7 @@ function useShiftForm() {
           doctor_id: data.doctorId,
           date,
           shift: shift as ShiftPayload["shift"],
-        }))
+        })),
     );
 
     try {
@@ -100,6 +100,7 @@ function useShiftForm() {
       const { data, error } = await supabase
         .from("doctors")
         .select("*")
+        .eq("is_active", true)
         .order("name")
         .returns<GetDoctorListResponse[]>();
 
